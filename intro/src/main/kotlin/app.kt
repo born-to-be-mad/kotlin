@@ -1,4 +1,4 @@
-package main.kotlin
+package by.dma
 
 /**
  * TODO
