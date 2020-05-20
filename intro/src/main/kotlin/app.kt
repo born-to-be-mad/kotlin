@@ -1,12 +1,16 @@
 package by.dma
 
 /**
- * TODO
+ * Main application.
  *
  * @author dzmitry.marudau
  * @since 2020.3
  */
 
 fun main() {
-    println("Hello, World!")
+    println("Start demo...")
+
+    val string = readLine()
+    val result = string?.let { Anagrams().count(it) }
+    println(result)
 }
