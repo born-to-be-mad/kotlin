@@ -14,11 +14,13 @@ internal class AnagramsTest {
 
     @Test
     fun `given abba count returns 4`() {
+        //baba, abab, baab, bbaa
         assertEquals(4, anagrams.count("abba"))
     }
 
     @Test
     fun `given ifailuhkqq count returns 3`() {
+        //ifaqiluhkqq, ifailuhkqq, ifailuhkqq
         assertEquals(3, anagrams.count("ifailuhkqq"))
     }
 }

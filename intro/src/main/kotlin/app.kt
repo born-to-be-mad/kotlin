@@ -9,6 +9,7 @@ package by.dma
 
 fun main() {
     println("Start demo...")
+    println("Input the string to count the anagrams:")
 
     val string = readLine()
     val result = string?.let { Anagrams().count(it) }
