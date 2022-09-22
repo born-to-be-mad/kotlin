@@ -11,8 +11,7 @@ class ListDemo {
     }
 
     fun createMutableList(): MutableList<String> {
-        val cityList = mutableListOf("Minsk", "Moscow", "Warsaw")
-        return cityList
+        return mutableListOf("Minsk", "Moscow", "Warsaw")
     }
 
     fun iterateUsingForEachLoop(): List<Int> {
@@ -44,6 +43,7 @@ class ListDemo {
         }
         return countryLength
     }
+
 
     fun iterateUsingForEachIndexedLoop(): List<Int> {
         val countryLength = mutableListOf<Int>()
@@ -83,6 +83,12 @@ class ListDemo {
         iterator.next()
         iterator.set("Milan")
         println(cities)
+    }
+
+    fun iterateWithIndex(): Unit {
+        for ((index, element) in countries.withIndex()) {
+            println("Index: $index, Element: $element")
+        }
     }
 
     fun retrieveElementsInList(): String {
