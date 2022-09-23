@@ -20,4 +20,6 @@ class Extensions {
         }
         println()
     }
+
+    fun isNotDigit(c: Char) = c !in '0'..'9'
 }
