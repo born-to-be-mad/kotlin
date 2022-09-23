@@ -27,3 +27,9 @@ hs_err_pid*
 /intro/*.iws
 /intro/.idea/
 /intro/target/
+
+*.iml
+*.ipr
+*.iws
+.idea/
+target/
