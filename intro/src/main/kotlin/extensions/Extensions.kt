@@ -1,5 +1,5 @@
 @file:JvmName("Utils")
-package by.dma.intro
+package by.dma.extensions
 
 /**
  * Created by IntelliJ IDEA.
@@ -8,7 +8,6 @@ package by.dma.intro
  * @since 2022.09
  */
 class Extensions {
-    fun String.lastChar(): Char = this.get(this.length - 1)
 
     fun max(a: Int, b: Int): Int = if (a > b) a else b
 
