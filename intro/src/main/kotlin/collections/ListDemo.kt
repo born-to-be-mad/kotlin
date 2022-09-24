@@ -1,5 +1,14 @@
 package by.dma.collections
 
+import by.dma.Anagrams
+
+fun main() {
+    println("Standard collections")
+    println("set.javaClass: " + hashSetOf(1, 2, 3).javaClass)
+    println("set.arrayListOf: " + arrayListOf(1, 2, 3).javaClass)
+    println("set.hashMapOf: " + hashMapOf(1 to "one", 2 to "two", 3 to "three").javaClass)
+}
+
 class ListDemo {
 
     private val countries = listOf("Belarus", "Russia", "Poland", "Ukraine", "Lithuania", "Latvia")
