@@ -29,3 +29,19 @@ fun evaluateGuess(secret: String, guess: String): Evaluation {
     }
     return Evaluation(rightPosition, wrongPosition)
 }
+
+fun evaluateGuessInFunctionalStyle(secret: String, guess: String): Evaluation {
+    // count the number of right positions
+    val rightPositions = secret.zip(guess).count {
+        it.first == it.second
+    }
+
+    val commonLetters = "ABCDEF".sumBy { ch ->
+        Math.min(secret.count {
+            it == ch
+        }, guess.count {
+            it == ch
+        })
+    }
+    return Evaluation(rightPositions, commonLetters - rightPositions)
+}

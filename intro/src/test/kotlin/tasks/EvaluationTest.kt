@@ -2,6 +2,7 @@ package tasks
 
 import by.dma.tasks.Evaluation
 import by.dma.tasks.evaluateGuess
+import by.dma.tasks.evaluateGuessInFunctionalStyle
 import junit.framework.TestCase.assertEquals
 import org.junit.Test
 
@@ -13,47 +14,28 @@ import org.junit.Test
  */
 internal class EvaluationTest {
     @Test
-    fun `example1`() {
+    fun `check evaluateGuess`() {
         assertEquals(Evaluation(4, 0), evaluateGuess("ABCD", "ABCD"))
-    }
-
-    @Test
-    fun `example2`() {
         assertEquals(Evaluation(0, 4), evaluateGuess("ABCD", "CDBA"))
-    }
-
-    @Test
-    fun `example3`() {
         assertEquals(Evaluation(2, 2), evaluateGuess("ABCD", "ABDC"))
-    }
-
-    @Test
-    fun `example4`() {
-        assertEquals(Evaluation(1,0), evaluateGuess("AABC", "ADFE"))
-    }
-
-    @Test
-    fun `example5`() {
+        assertEquals(Evaluation(1, 0), evaluateGuess("AABC", "ADFE"))
         assertEquals(Evaluation(1, 1), evaluateGuess("AABC", "ADFA"))
-    }
-
-    @Test
-    fun `example6`() {
         assertEquals(Evaluation(0, 2), evaluateGuess("AABC", "DFAA"))
-    }
-
-    @Test
-    fun `example7`() {
         assertEquals(Evaluation(0, 1), evaluateGuess("AABC", "DEFA"))
-    }
-
-    @Test
-    fun `example8`() {
         assertEquals(Evaluation(1, 0), evaluateGuess("DCFC", "ABEC"))
+        assertEquals(Evaluation(1, 0), evaluateGuess("BDAD", "AAAE"))
     }
 
     @Test
-    fun `example9`() {
-        assertEquals(Evaluation(1, 0), evaluateGuess("BDAD", "AAAE"))
+    fun `check evaluateGuessInFunctionalStyle`() {
+        assertEquals(Evaluation(4, 0), evaluateGuessInFunctionalStyle("ABCD", "ABCD"))
+        assertEquals(Evaluation(0, 4), evaluateGuessInFunctionalStyle("ABCD", "CDBA"))
+        assertEquals(Evaluation(2, 2), evaluateGuessInFunctionalStyle("ABCD", "ABDC"))
+        assertEquals(Evaluation(1, 0), evaluateGuessInFunctionalStyle("AABC", "ADFE"))
+        assertEquals(Evaluation(1, 1), evaluateGuessInFunctionalStyle("AABC", "ADFA"))
+        assertEquals(Evaluation(0, 2), evaluateGuessInFunctionalStyle("AABC", "DFAA"))
+        assertEquals(Evaluation(0, 1), evaluateGuessInFunctionalStyle("AABC", "DEFA"))
+        assertEquals(Evaluation(1, 0), evaluateGuessInFunctionalStyle("DCFC", "ABEC"))
+        assertEquals(Evaluation(1, 0), evaluateGuessInFunctionalStyle("BDAD", "AAAE"))
     }
 }
