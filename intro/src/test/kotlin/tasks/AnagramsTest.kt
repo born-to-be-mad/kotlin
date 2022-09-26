@@ -1,5 +1,6 @@
-package by.dma
+package by.dma.tasks
 
+import by.dma.tasks.Anagrams
 import org.junit.Test
 import kotlin.test.assertEquals
 

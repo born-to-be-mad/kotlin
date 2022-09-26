@@ -1,7 +1,5 @@
 package by.dma.collections
 
-import by.dma.Anagrams
-
 fun main() {
     println("Standard collections")
     println("set.javaClass: " + hashSetOf(1, 2, 3).javaClass)

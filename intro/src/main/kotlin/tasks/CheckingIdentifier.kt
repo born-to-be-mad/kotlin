@@ -1,4 +1,4 @@
-package by.dma.intro
+package by.dma.tasks
 
 /**
  * Implement the function that checks whether a string is a valid identifier.

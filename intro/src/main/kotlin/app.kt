@@ -1,5 +1,7 @@
 package by.dma
 
+import by.dma.tasks.Anagrams
+
 /**
  * Main application.
  *

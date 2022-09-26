@@ -1,4 +1,4 @@
-package by.dma
+package by.dma.tasks
 
 class Anagrams {
     fun String.sort(): List<Char> = this.toList().sorted()
