@@ -119,3 +119,21 @@ fun TaxiPark.checkParetoPrinciple(): Boolean {
         .sum()
     return top20Income >= totalIncome * 0.8
 }
+
+fun TaxiPark.checkParetoPrinciple2(): Boolean {
+    if (trips.isEmpty()) return false
+
+    val totalIncome = trips.sumByDouble(Trip::cost)
+
+    val sortedDriversIncome: List<Double> = trips
+        .groupBy(Trip::driver)
+        .map { (_, tripsByDriver) -> tripsByDriver.sumOf(Trip::cost) }
+        .sortedDescending()
+
+    val numberOfTopDrivers = (0.2 * allDrivers.size).toInt()
+    val incomeByTopDrivers = sortedDriversIncome
+        .take(numberOfTopDrivers)
+        .sum()
+
+    return incomeByTopDrivers >= 0.8 * totalIncome
+}
