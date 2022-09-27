@@ -10,8 +10,13 @@ package by.dma.tasks
  * @since 2022.09
  */
 fun String.isNice(): Boolean {
-    val condition1 = listOf("bu", "ba", "be").none { it in this }
-    val condition2 = count { listOf('a', 'e', 'i', 'o', 'u').contains(it) } >= 3
+    val condition1 = setOf("bu", "ba", "be").none { this.contains(it) }
+
+    val condition2 = count { it in setOf('a', 'e', 'i', 'o', 'u') } >= 3
+
     val condition3 = zipWithNext().any { it.first == it.second }
-    return listOf(condition1, condition2, condition3).count { it } >= 2
+    // alternative solution
+    //val condition3 = windowed(2).any { it[0] == it[1] }
+
+    return setOf(condition1, condition2, condition3).count { it } >= 2
 }
