@@ -56,15 +56,24 @@ fun TaxiPark.findTheMostFrequentTripDurationPeriod(): IntRange? {
 }
 
 /*
- * Task #6. Check whether 20% of the drivers contribute 80% of the income.
+ * Task #6. Check whether no more than 20% of the drivers contribute 80% of the income.
+ * The function should return true if the top 20% drivers (meaning the top 20% best performers) represent 80%
+ * or more of all trips total income, or false if not.
+ * The drivers that have no trips should be considered as contributing zero income.
+ * If the taxi park contains no trips, the result should be false.
  */
 fun TaxiPark.checkParetoPrinciple(): Boolean {
+    // If the taxi park contains no trips, the result should be false.
+    if(trips.isEmpty()) return false
+
     val driversIncome: Map<Driver, Double> = trips.groupingBy { it.driver }
         .fold(0.0) { sum, trip -> sum + trip.cost }
     val totalIncome = driversIncome.values.sum()
+    val amountOfTopContributors = Integer.max(allDrivers.size / 5, 1)
+
     val top20Income = driversIncome.values
         .sortedDescending()
-        .take(Integer.max(driversIncome.size / 5, 1))
+        .take(amountOfTopContributors)
         .sum()
     return top20Income >= totalIncome * 0.8
 }
