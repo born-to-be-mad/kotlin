@@ -1,6 +1,8 @@
 package by.dma.tasks
 
 import java.math.BigInteger
+import java.math.BigInteger.ONE
+import java.math.BigInteger.ZERO
 
 /**
 Rational Numbers.
@@ -21,59 +23,32 @@ You need to support two ways to create rationals. The first one is to convert a 
 The alternative way to create a rational is to use divBy infix function like in 1 divBy 2. The receiver and the argument might be of types Int, Long, or BigInteger.
  */
 // main class
-class Rational(val numerator: BigInteger, val denominator: BigInteger) : Comparable<Rational> {
+class Rational(num: BigInteger, den: BigInteger) : Comparable<Rational> {
+    val numerator: BigInteger
+    val denominator: BigInteger
 
     init {
-        require(denominator != BigInteger.ZERO) { "Denominator must not be zero" }
+        require(den != ZERO) { "Denominator must not be zero" }
+        val gcd = num.gcd(den)
+        val sign = den.signum().toBigInteger()
+        numerator = num / gcd * sign
+        denominator = den / gcd * sign
     }
 
-    override
-    fun toString(): String {
-        val normalizedRational = normalize()
-        return if (normalizedRational.denominator == BigInteger.ONE) {
-            normalizedRational.numerator.toString()
-        } else {
-            "${normalizedRational.numerator}/${normalizedRational.denominator}"
-        }
+    override fun toString(): String = if (denominator == ONE) {
+        "$numerator"
+    } else {
+        "$numerator/$denominator"
     }
 
 
     override fun equals(other: Any?): Boolean {
-        val normalizedOriginal = this.normalize()
-        val normalizedOther = (other as Rational).normalize()
+        val normalizedOriginal = this.normalized()
+        val normalizedOther = (other as Rational).normalized()
         return normalizedOriginal.numerator == normalizedOther.numerator && normalizedOriginal.denominator == normalizedOther.denominator
     }
 
-    operator fun plus(other: Rational): Rational {
-        val newNumerator = numerator * other.denominator + other.numerator * denominator
-        val newDenominator = denominator * other.denominator
-        return Rational(newNumerator, newDenominator)
-    }
-
-    operator fun minus(other: Rational): Rational {
-        val newNumerator = numerator * other.denominator - other.numerator * denominator
-        val newDenominator = denominator * other.denominator
-        return Rational(newNumerator, newDenominator)
-    }
-
-    operator fun times(other: Rational): Rational {
-        val newNumerator = numerator * other.numerator
-        val newDenominator = denominator * other.denominator
-        return Rational(newNumerator, newDenominator)
-    }
-
-    operator fun div(other: Rational): Rational {
-        val newNumerator = numerator * other.denominator
-        val newDenominator = denominator * other.numerator
-        return Rational(newNumerator, newDenominator)
-    }
-
-    operator fun unaryMinus(): Rational {
-        return Rational(-numerator, denominator)
-    }
-
-    override
-    fun compareTo(other: Rational): Int {
+    override fun compareTo(other: Rational): Int {
         val thisNumerator = numerator * other.denominator
         val otherNumerator = other.numerator * denominator
         return thisNumerator.compareTo(otherNumerator)
@@ -83,6 +58,35 @@ class Rational(val numerator: BigInteger, val denominator: BigInteger) : Compara
         var result = numerator.hashCode()
         result = 31 * result + denominator.hashCode()
         return result
+    }
+
+
+    operator fun plus(other: Rational): Rational {
+        val newNumerator = numerator * other.denominator + other.numerator * denominator
+        val newDenominator = denominator * other.denominator
+        return newNumerator.divBy(newDenominator)
+    }
+
+    operator fun minus(other: Rational): Rational {
+        val newNumerator = numerator * other.denominator - other.numerator * denominator
+        val newDenominator = denominator * other.denominator
+        return newNumerator.divBy(newDenominator)
+    }
+
+    operator fun times(other: Rational): Rational {
+        val newNumerator = numerator * other.numerator
+        val newDenominator = denominator * other.denominator
+        return newNumerator.divBy(newDenominator)
+    }
+
+    operator fun div(other: Rational): Rational {
+        val newNumerator = numerator * other.denominator
+        val newDenominator = denominator * other.numerator
+        return newNumerator.divBy(newDenominator)
+    }
+
+    operator fun unaryMinus(): Rational {
+        return Rational(-numerator, denominator)
     }
 
 }
@@ -125,23 +129,24 @@ fun main() {
 
 // Extensions
 fun String.toRational(): Rational {
-    val strings = this.split("/")
-    val numinator = strings.getOrElse(0) { "0" }
-    val denominator = strings.getOrElse(1) { "1" }
+    fun fail(): Nothing = throw IllegalArgumentException("Invalid rational number: $this")
+
+    if (!contains("/")) {
+        return Rational(toBigInteger(), ONE)
+    }
+
+    val (nominatorString, denominatorString) = this.split("/")
     return Rational(
-        numinator.toBigInteger(), denominator.toBigInteger()
+        nominatorString.toBigIntegerOrNull() ?: fail(),
+        denominatorString.toBigIntegerOrNull() ?: fail()
     )
 }
 
-fun Rational.normalize(): Rational {
+
+fun Rational.normalized(): Rational {
     val gcd = this.numerator.gcd(this.denominator)
-    var newNumerator = this.numerator / gcd
-    var newDenominator = this.denominator / gcd
-    if (newDenominator < BigInteger.ZERO) {
-        newNumerator = newNumerator.negate()
-        newDenominator = newDenominator.negate()
-    }
-    return Rational(newNumerator, newDenominator)
+    val sign = denominator.signum().toBigInteger();
+    return Rational(this.numerator / gcd * sign, this.denominator / gcd * sign)
 }
 
 
