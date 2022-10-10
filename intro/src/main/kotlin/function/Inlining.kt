@@ -1,0 +1,42 @@
+package by.dma.function
+
+import by.dma.extensions.eq
+
+/**
+ * Created by IntelliJ IDEA.
+ *
+ * @author dzmitry.marudau
+ * @since 2022.10
+ */
+
+fun filterNonZero(list: List<Int>) = list.filter { it != 0 }
+
+/**
+ * Equivalent of filterNonZero inlined by compiler
+ */
+fun filterNonZeroGenerated(list: List<Int>): List<Int> {
+    val destination = ArrayList<Int>()
+    for (element in list) {
+        if (element != 0) {
+            destination.add(element)
+        }
+    }
+    return destination
+}
+
+fun main(args: Array<String>) {
+    val list = listOf(1, 2, 3)
+
+    filterNonZero(list).toString() eq "[1, 2, 3]"
+    filterNonZeroGenerated(list).toString() eq "[1, 2, 3]"
+}
+
+inline fun <T> Iterable<T>.filter(predicate: (T) -> Boolean): List<T> {
+    val destination = ArrayList<T>()
+    for (element in this) {
+        if (predicate(element)) {
+            destination.add(element)
+        }
+    }
+    return destination
+}

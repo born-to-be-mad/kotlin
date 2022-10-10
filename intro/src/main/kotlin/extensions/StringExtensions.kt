@@ -17,3 +17,8 @@ fun String.repeat(n: Int): String {
     }
     return sb.toString()
 }
+
+infix fun String.eq(str: String) {
+    if (this != str) throw AssertionError("$this != $str")
+    else println("$this == $str: OK")
+}
