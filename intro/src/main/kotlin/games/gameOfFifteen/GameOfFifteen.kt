@@ -1,8 +1,8 @@
 package games.gameOfFifteen
 
-import board.Direction
-import board.GameBoard
-import board.createGameBoard
+import games.board.Direction
+import games.board.GameBoard
+import games.board.createGameBoard
 import games.game.Game
 
 /*

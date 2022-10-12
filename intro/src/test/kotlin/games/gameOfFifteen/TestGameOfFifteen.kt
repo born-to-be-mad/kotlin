@@ -1,7 +1,7 @@
 package games.gameOfFifteen
 
-import board.Direction
-import board.Direction.*
+import games.board.Direction
+import games.board.Direction.*
 import games.game.Game
 import org.junit.Assert
 import org.junit.Test

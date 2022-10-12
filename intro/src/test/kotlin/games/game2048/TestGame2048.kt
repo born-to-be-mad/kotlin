@@ -1,9 +1,9 @@
 package games.game2048
 
-import board.Cell
-import board.Direction
-import board.Direction.*
-import board.GameBoard
+import games.board.Cell
+import games.board.Direction
+import games.board.Direction.*
+import games.board.GameBoard
 import games.game.Game
 import org.junit.Assert
 import org.junit.Test

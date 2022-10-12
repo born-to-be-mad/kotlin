@@ -1,7 +1,7 @@
 package games.game2048
 
-import board.GameBoard
-import board.createGameBoard
+import games.board.GameBoard
+import games.board.createGameBoard
 
 abstract class AbstractTestGameWithSmallNumbers {
     private val width = 4

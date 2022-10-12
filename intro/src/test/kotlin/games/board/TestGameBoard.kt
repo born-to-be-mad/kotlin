@@ -1,7 +1,7 @@
 package games.board
 
-import board.GameBoard
-import board.createGameBoard
+import games.board.GameBoard
+import games.board.createGameBoard
 import org.junit.Assert
 import org.junit.FixMethodOrder
 import org.junit.Test

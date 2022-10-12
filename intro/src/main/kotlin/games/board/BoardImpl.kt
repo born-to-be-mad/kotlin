@@ -1,6 +1,6 @@
-package board
+package games.board
 
-import board.Direction.*
+import games.board.Direction.*
 
 fun createSquareBoard(width: Int): SquareBoard =TODO()
 

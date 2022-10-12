@@ -1,7 +1,7 @@
 package games.game2048
 
-import board.Cell
-import board.GameBoard
+import games.board.Cell
+import games.board.GameBoard
 import kotlin.random.Random
 
 interface Game2048Initializer<T> {

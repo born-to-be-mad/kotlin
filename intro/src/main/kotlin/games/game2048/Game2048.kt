@@ -1,9 +1,9 @@
 package games.game2048
 
-import board.Cell
-import board.Direction
-import board.GameBoard
-import board.createGameBoard
+import games.board.Cell
+import games.board.Direction
+import games.board.GameBoard
+import games.board.createGameBoard
 import games.game.Game
 
 /*

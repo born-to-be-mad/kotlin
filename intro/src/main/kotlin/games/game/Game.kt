@@ -1,6 +1,6 @@
 package games.game
 
-import board.Direction
+import games.board.Direction
 
 /** A game with a board and a score. */
 interface Game {

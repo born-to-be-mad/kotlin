@@ -1,9 +1,9 @@
 package games.board
 
-import board.Cell
-import board.Direction
-import board.Direction.*
-import board.createSquareBoard
+import games.board.Cell
+import games.board.Direction
+import games.board.Direction.*
+import games.board.createSquareBoard
 import org.junit.Assert
 import org.junit.FixMethodOrder
 import org.junit.Test
