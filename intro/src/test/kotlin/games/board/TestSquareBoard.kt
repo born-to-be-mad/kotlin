@@ -1,9 +1,9 @@
-package tasks.board
+package games.board
 
-import by.dma.tasks.board.Cell
-import by.dma.tasks.board.Direction
-import by.dma.tasks.board.Direction.*
-import by.dma.tasks.board.createSquareBoard
+import board.Cell
+import board.Direction
+import board.Direction.*
+import board.createSquareBoard
 import org.junit.Assert
 import org.junit.FixMethodOrder
 import org.junit.Test
