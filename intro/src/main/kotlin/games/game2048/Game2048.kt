@@ -13,7 +13,7 @@ import games.game.Game
  * After implementing it you can try to play the game running 'PlayGame2048'.
  */
 fun newGame2048(initializer: Game2048Initializer<Int> = RandomGame2048Initializer): Game =
-        Game2048(initializer)
+    Game2048(initializer)
 
 class Game2048(private val initializer: Game2048Initializer<Int>) : Game {
     private val board = createGameBoard<Int?>(4)
@@ -37,11 +37,11 @@ class Game2048(private val initializer: Game2048Initializer<Int>) : Game {
     override fun get(i: Int, j: Int): Int? = board.run { get(getCell(i, j)) }
 }
 
-/*
+/**
  * Add a new value produced by 'initializer' to a specified cell in a board.
  */
 fun GameBoard<Int?>.addNewValue(initializer: Game2048Initializer<Int>) {
-    TODO()
+    initializer.nextValue(this)?.let { (cell, value) -> set(cell, value) }
 }
 
 /*
@@ -53,7 +53,20 @@ fun GameBoard<Int?>.addNewValue(initializer: Game2048Initializer<Int>) {
  * Return 'true' if the values were moved and 'false' otherwise.
  */
 fun GameBoard<Int?>.moveValuesInRowOrColumn(rowOrColumn: List<Cell>): Boolean {
-    TODO()
+    val originalValues = rowOrColumn.map { this[it] }
+    val updatedValues = originalValues.moveAndMergeEqual { value -> value * 2 }
+    if (originalValues == updatedValues) {
+        return false
+    }
+
+    for (i in updatedValues.indices) {
+        this[rowOrColumn[i]] = updatedValues[i]
+    }
+    for (i in updatedValues.size until width) {
+        this[rowOrColumn[i]] = null
+    }
+
+    return true
 }
 
 /*
@@ -64,5 +77,18 @@ fun GameBoard<Int?>.moveValuesInRowOrColumn(rowOrColumn: List<Cell>): Boolean {
  * Return 'true' if the values were moved and 'false' otherwise.
  */
 fun GameBoard<Int?>.moveValues(direction: Direction): Boolean {
-    TODO()
+    return when (direction) {
+        Direction.UP -> (1..width)
+            .map { moveValuesInRowOrColumn(getColumn(1..width, it)) }
+            .any { it }
+        Direction.DOWN -> (1..width)
+            .map { moveValuesInRowOrColumn(getColumn(width downTo 1, it)) }
+            .any { it }
+        Direction.LEFT -> (1..width)
+            .map { moveValuesInRowOrColumn(getRow(it, 1..width)) }
+            .any { it }
+        Direction.RIGHT -> (1..width)
+            .map { moveValuesInRowOrColumn(getRow(it, width downTo 1)) }
+            .any { it }
+    }
 }

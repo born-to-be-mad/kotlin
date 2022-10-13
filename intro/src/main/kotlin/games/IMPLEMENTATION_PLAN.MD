@@ -17,16 +17,16 @@
   By the rules of the game 2048, the new cell with the value 2 or 4 ( the latter in 10% of the cases) is added to a random empty cell.  
   Source: `Game2048Initializer.kt`; tests: `TestGame2048Initializer.kt`.
 
-- [ ] You can find the main game process in the Game2048 class. Implement the utility function `addNewValue` that adds a
-  new value to a random free cell.   
+- [x] You can find the main game process in the Game2048 class.
+  Implement the utility function `addNewValue` that adds a new value to a random free cell.   
   The initializer parameter returns both a value and a cell that the new value should be added to.  
   Source: `Game2048.kt`; tests: `TestAddingValue.kt`.
 
-- [ ] Implement the utility function `moveValuesInRowOrColumn`, which updates the map contents by moving the elements only
+- [x] Implement the utility function `moveValuesInRowOrColumn`, which updates the map contents by moving the elements only
   in one row or column.  
   Source: `Game2048.kt`; tests: `TestMoveValuesInRowOrColumn.kt`.
 
-- [ ] Implement the remaining function `moveValues`, which moves all the elements in a board to a given direction
+- [x] Implement the remaining function `moveValues`, which moves all the elements in a board to a given direction
   following the rule games.  
   Source: `Game2048.kt`; tests: `TestMoveValues.kt`.
 
