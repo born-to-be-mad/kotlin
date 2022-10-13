@@ -40,7 +40,7 @@
 - [x] Use the `isEven` function to produce only solvable permutations as initial permutations.   
   Source: `GameOfFifteenInitializer.kt`; tests: `TestGameOfFifteenInitializer.kt`.
 
-- [ ] Implement the `GameOfFifteen` class from scratch describing the game process.   
+- [x] Implement the `GameOfFifteen` class from scratch describing the game process.   
   It should implement the `Game` interface and make use of initializer argument.   
   Note that this argument is used in tests to provide a different initial permutation.   
   Source: `GameOfFifteen.kt`; tests: `TestGameOfFifteen.kt`. 
