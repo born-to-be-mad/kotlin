@@ -10,5 +10,30 @@ import games.game.Game
  * When you finish, you can play the game by executing 'PlayGameOfFifteen'.
  */
 fun newGameOfFifteen(initializer: GameOfFifteenInitializer = RandomGameInitializer()): Game =
-    TODO()
+    GameOfFifteen(initializer)
 
+class GameOfFifteen(private val initializer: GameOfFifteenInitializer) : Game {
+
+    private val board: GameBoard<Int?> = createGameBoard(4)
+
+    override fun initialize() {
+        TODO("Not yet implemented")
+    }
+
+    override fun canMove(): Boolean {
+        TODO("Not yet implemented")
+    }
+
+    override fun hasWon(): Boolean {
+        TODO("Not yet implemented")
+    }
+
+    override fun processMove(direction: Direction) {
+        TODO("Not yet implemented")
+    }
+
+    override fun get(i: Int, j: Int): Int? {
+        TODO("Not yet implemented")
+    }
+
+}
