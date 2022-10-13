@@ -1,3 +1,10 @@
+# Base boards
+ 
+- [ ] Create new class `SquareBoardImpl` that implements `SquareBoard` interface.  
+  Source: `BoardImpl.kt`.
+- [ ] Create new class `GameBoardImpl` that extends `SquareBoardImpl` and implements `GameBoard` interface.  
+  Source: `BoardImpl.kt`.
+
 # Game 2048
 
 - [x] Implement the functionality that moves the content in one row or column: removes empty cells and merges identical
