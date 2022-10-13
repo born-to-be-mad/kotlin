@@ -1,7 +1,5 @@
 package games.board
 
-import games.board.GameBoard
-import games.board.createGameBoard
 import org.junit.Assert
 import org.junit.FixMethodOrder
 import org.junit.Test
@@ -136,8 +134,8 @@ class TestGameBoard {
         val allNonZero = gameBoard.all { it != 0 }
         val anyZero = gameBoard.any { it == 0 }
         Assert.assertTrue(buildString {
-            appendln("'board.all { it != 0 }' should give the same result as '!board.any { it == 0 }' for the board")
-            appendln(gameBoard.asString())
+            appendLine("'board.all { it != 0 }' should give the same result as '!board.any { it == 0 }' for the board")
+            appendLine(gameBoard.asString())
         }, allNonZero == !anyZero)
     }
 }

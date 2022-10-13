@@ -13,7 +13,7 @@
   argument, a method to merge two equal elements.  
   Source: `Game2048Helper.kt`; tests: `TestGame2048Helper.kt`.
 
-- [ ] Specify how the new element should be added(function `nextValue`).  
+- [x] Specify how the new element should be added(function `nextValue`).  
   By the rules of the game 2048, the new cell with the value 2 or 4 ( the latter in 10% of the cases) is added to a random empty cell.  
   Source: `Game2048Initializer.kt`; tests: `TestGame2048Initializer.kt`.
 
