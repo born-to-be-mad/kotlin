@@ -29,6 +29,18 @@ class TestMoveValuesInRowOrColumn : AbstractTestGameWithSmallNumbers() {
     fun testNoMove() = testMoveInRowOrColumn({ it.getRow(1, 1..4) }, "Row(1, 1..4)",
             "2424 ---- ---- ----", "2424 ---- ---- ----", expectedMove = false)
 
+    @Test
+    fun testNoMoveForRowWhenEmpty() = testMoveInRowOrColumn(
+        { it.getRow(1, 1..4) }, "Row(1, 1..4)",
+        "---- ---- ---- ----", "---- ---- ---- ----", expectedMove = false
+    )
+
+    @Test
+    fun testNoMoveForColumnWhenEmpty() = testMoveInRowOrColumn(
+        { it.getColumn(1..4, 1) }, "Column(1..4, 1)",
+        "---- ---- ---- ----", "---- ---- ---- ----", expectedMove = false
+    )
+
     private fun testMoveInRowOrColumn(
             getRowOrColumn: (SquareBoard) -> List<Cell>,
             rowOrColumnName: String,

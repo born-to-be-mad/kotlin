@@ -55,7 +55,7 @@ fun GameBoard<Int?>.addNewValue(initializer: Game2048Initializer<Int>) {
 fun GameBoard<Int?>.moveValuesInRowOrColumn(rowOrColumn: List<Cell>): Boolean {
     val originalValues = rowOrColumn.map { this[it] }
     val updatedValues = originalValues.moveAndMergeEqual { value -> value * 2 }
-    if (originalValues == updatedValues) {
+    if (originalValues == updatedValues || originalValues.filterNotNull().isEmpty()) {
         return false
     }
 
