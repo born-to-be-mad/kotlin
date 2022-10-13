@@ -8,8 +8,12 @@ package games.gameOfFifteen
 
  * If the game of fifteen is started with the wrong parity, you can't get the correct result
  *   (numbers sorted in the right order, empty cell at last).
- * Thus the initial permutation should be correct.
+ * Thus, the initial permutation should be correct.
  */
 fun isEven(permutation: List<Int>): Boolean {
-    TODO()
+    return permutation
+        .mapIndexed { index, i ->
+            permutation.subList(index + 1, permutation.size).count { it < i }
+        }
+        .sum() % 2 == 0
 }

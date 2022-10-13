@@ -1,6 +1,6 @@
 # Game 2048
 
-- [ ] Implement the functionality that moves the content in one row or column: removes empty cells and merges identical
+- [x] Implement the functionality that moves the content in one row or column: removes empty cells and merges identical
   elements.   
   To get you familiar with lambdas and generics, this functionality is declared as a generic function that accepts as
   argument, a method to merge two equal elements.  
@@ -25,7 +25,7 @@
 
 # Game 15
 
-- [ ] Game of Fifteen is solvable only if the initial permutation of numbers is even.  
+- [x] Game of Fifteen is solvable only if the initial permutation of numbers is even.  
   First, implement the function `isEven` declared in `GameOfFifteenHelper.kt` checking whether a permutation is even or
   odd.   
   Source: `GameOfFifteenHelper.kt`; tests: `TestGameOfFifteenHelper.kt`.
