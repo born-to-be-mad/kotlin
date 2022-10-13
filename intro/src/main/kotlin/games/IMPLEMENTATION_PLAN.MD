@@ -1,8 +1,8 @@
 # Base boards
  
-- [ ] Create new class `SquareBoardImpl` that implements `SquareBoard` interface.  
+- [x] Create new class `SquareBoardImpl` that implements `SquareBoard` interface.  
   Source: `BoardImpl.kt`.
-- [ ] Create new class `GameBoardImpl` that extends `SquareBoardImpl` and implements `GameBoard` interface.  
+- [x] Create new class `GameBoardImpl` that extends `SquareBoardImpl` and implements `GameBoard` interface.  
   Source: `BoardImpl.kt`.
 
 # Game 2048
